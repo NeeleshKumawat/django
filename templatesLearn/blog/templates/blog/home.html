@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>#1 Templace Basics</title>
+    </head>
+    <body>
+        <h1>Template Basics</h1>
+        <p>Welcome to the template basics tutorial!</p>
+
+        {%comment%} Single Variable {%endcomment%}
+
+        <p>Name: {{ name }}</p>
+        <p>Age: {{ age }}</p>
+
+        {%comment%} List Access {%endcomment%}
+        <p>Skill: {{ skills }}</p>
+        <p>First Skill: {{ skills.0 }}</p>
+
+        {%comment%} Object Access {%endcomment%}
+        <p>User Name: {{ user.name }}</p>
+        <p>User Age: {{ user.age }}</p>
+
+        {%comment%} Dictionary Access {%endcomment%}
+        <p>Blog Title: {{ blog.title }}</p>
+        <p>Blog Content: {{ blog.content }}</p>
+        <p>Blog Date Posted: {{ blog.date_posted }}</p>
+
+        <p>Blog Content: {{ blog.content|safe }}</p>
+
+        {%comment%} Default Value {%endcomment%}
+        <p>Empty Value: {{ empty_value|default:"No value provided" }}</p>
+        <p>Empty Value: {{ empty_value|default_if_none:"No data" }}</p>
+
+    </body>
+</html>

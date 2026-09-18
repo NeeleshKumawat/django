@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Template Basics - 2</title>
+    </head>
+    <body>
+        <h1>Filter Page</h1>
+        <p>Welcome to the template basics filter tutorial!</p>
+
+        {%comment%} Single Variable {%endcomment%}
+
+        <p>Title: {{ post.title }}</p>
+        <p>Title: {{ post.title|upper }}</p>
+        <p>Description normal: {{ post.description }}</p>
+        <p>Description lowercase: {{ post.description|lower }}</p>
+        <p>Description capfirst: {{ post.description|capfirst }}</p>
+        <p>Description title: {{ post.description|title }}</p>
+        <p>Description truncatechars: {{ post.description|truncatechars:10 }}</p>
+        <p>Description truncatewords: {{ post.description|truncatewords:2 }}</p>
+        <p>Description linebreaks: {{ post.description|linebreaks }}</p>
+
+
+        <p>Author: {{ post.author }}</p>
+        <p>Created At: {{ post.created_at }}</p>
+        <p>Comments Count: {{ post.comments_count }}</p>
+
+        {%comment%} List Access {%endcomment%}
+        <p>Tags: {{ post.tags }}</p>
+        <p>First Tag: {{ post.tags.0 }}</p>
+
+        <hr/>
+
+        <p><b>Original Price</b>: ${{ post.price }}</p>
+        <p><b>Original Price(+5)</b>: {{ post.price|add:5 }}</p> 
+
+        {%comment%} Division {%endcomment%}
+        <p><b>Number Divided by 2</b>: {{ post.number|divisibleby:2 }}</p>
+
+        {% if post.number|divisibleby:2 %}
+            <p>The number is divisible by 2.</p>
+        {% else %}
+            <p>The number is not divisible by 2.</p>
+        {% endif %}
+
+        {% comment %} List Filters {% endcomment %}
+
+        <p><b>First Tag</b>: {{ post.tags|first }}</p>
+        <p><b>Last Tag</b>: {{ post.tags|last }}</p>
+        <p><b>Tags Count</b>: {{ post.tags|length }}</p>
+        <p><b>Slice</b>: {{ post.tags|slice:2 }}</p>
+        <p></p><b>Join</b>: {{ post.tags|join:", " }}</p>
+
+        <hr/>
+
+        {% comment %} Yes/No & Plural {% endcomment %}
+
+        <p>Author Available: {{ post.author|yesno:"Yes,No" }}</p>
+        <p>Comments Count: {{ post.comments_count|pluralize:"Comment,Comments" }}</p>
+
+        {% comment %} Encoding and Formatting {% endcomment %}
+        <p><b>Title Encode</b>: {{ post.title|urlencode }}</p>
+        <p><b>Float Encode</b>: {{ 123.456|floatformat:2 }}</p>
+
+        {% comment %} Date Formatting {% endcomment %}
+
+    </body>
+</html>
